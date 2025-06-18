@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sequence Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background: #f0f0f0;
+    }
+    form { margin-bottom: 2em; }
+    .result {
+      background: #fff;
+      padding: 1em;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Beanbag Score Finder</h1>
+  <form method="POST">
+    <label>Enter Target Score:</label>
+    <input type="text" name="score" required>
+    <input type="submit" value="Find Best Sequence">
+  </form>
+
+  {% if result %}
+    <div class="result">
+      {% if result.error %}
+        <strong>{{ result.error }}</strong>
+      {% else %}
+        <p><strong>Input Score:</strong> {{ result.input }}</p>
+        <p><strong>Best Score:</strong> {{ result.score }}</p>
+        <p><strong>Throws:</strong> {{ result.length }}</p>
+        <p><strong>Sequence:</strong> {{ result.sequence }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</body>
+</html>
